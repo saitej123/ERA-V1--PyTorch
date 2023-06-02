@@ -26,7 +26,7 @@ This repository contains Python scripts for training and testing a Convolutional
 
 ## Requirements
 
-- Python 3.9+
+- Python 3.10
 - PyTorch 2.0
 - torchvision
 - Matplotlib
@@ -34,11 +34,15 @@ This repository contains Python scripts for training and testing a Convolutional
 
 ## Files Details
 
-- `utils.py`: This file contains all the helper functions required for the workflow, such as data preprocessing of the MNIST dataset, data visualization, model training and testing.
+- `utils.py`: This file contains all the helper functions required for the workflow.
+    - `get_correct_pred_count`: Calculates the number of correct predictions
+    - `train`: Trains the model on the training dataset
+    - `test`: Evaluates the model on the test dataset
+    - `loss_plots`: Plotting the loss , accuracies for training and test
 
-- `model.py`: This file defines the architecture of the Convolutional Neural Network model used for the task. It includes convolutional layers and fully connected layers.
+- `model.py`: This file defines the architecture of the Convolutional Neural Network model  `Net(nn.Module)` used for the task. It includes convolutional layers and fully connected layers.
 
-- `S5.ipynb` : The main Jupyter notebook that manages the entire process. It imports functions from `utils.py` and the model from `model.py` to train and evaluate the model on the MNIST dataset. The notebook orchestrates the overall workflow.
+- `S5.ipynb` : The main `Jupyter notebook` that manages the entire process. It imports functions from `utils.py` and the model from `model.py` to train and evaluate the model on the MNIST dataset. The notebook orchestrates the overall workflow.
 
 ## How To Use
 
@@ -46,14 +50,14 @@ This repository contains Python scripts for training and testing a Convolutional
 
 - The notebook includes the following steps:
 
-    1. **Data preprocessing**: Application of transformations on the MNIST dataset for data augmentation and normalization.
+    1. **Data Transformations**: Application of transformations on the MNIST dataset for data augmentation and normalization.
     2. **Model training**: Training the `CNN model` using the preprocessed training set.
     3. **Model testing**: Evaluation of the trained model on the test dataset and print of the loss and accuracy.
-    4. **Performance visualization**: Plotting of accuracy and `loss graphs` for both the training and test datasets.
+    4. **Performance visualization**: Plotting of `accuracy` and `loss graphs` for both the training and test datasets.
 
 ## Results
 
-The final trained model achieves an accuracy of 99.80% on the MNIST test set.
+The final trained model achieves an accuracy of 99.50% on the MNIST test set.
 
 ```
 Model Summary
@@ -78,4 +82,5 @@ Estimated Total Size (MB): 2.94
 ----------------------------------------------------------------
 ```
 
-`Developed by Sai teja`
+
+### `Developed by Sai teja` (macharlasaiteja@gmail.com)

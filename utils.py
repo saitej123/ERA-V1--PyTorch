@@ -1,10 +1,8 @@
 import torch
-from torchvision import transforms, datasets
 import torch.nn as nn
 import torch.optim as optim
-import matplotlib.pyplot as plt
-from torch.utils.data import DataLoader
 from tqdm import tqdm
+import matplotlib.pyplot as plt
 
 train_losses = []
 test_losses = []
@@ -12,55 +10,6 @@ train_acc = []
 test_acc = []
 test_incorrect_pred = {'images': [], 'ground_truths': [], 'predicted_vals': []}
 
-def preprocess_data(data):
-    """
-    Preprocesses the MNIST data based on the specified data type.
-
-    Args:
-        data (str): Type of data to preprocess. Should be either 'train' or 'test'.
-
-    Returns:
-        transforms.Compose: Preprocessed data transformations.
-    """
-    train_transforms = transforms.Compose([
-        transforms.RandomApply([transforms.CenterCrop(22)], p=0.1),
-        transforms.Resize((28, 28)),
-        transforms.RandomRotation((-15., 15.), fill=0),
-        transforms.ToTensor(),
-        transforms.Normalize((0.1307,), (0.3081,)),
-    ])
-
-    test_transforms = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize((0.1307,), (0.3081,)),
-    ])
-
-    if data == 'train':
-        return train_transforms
-    elif data == 'test':
-        return test_transforms
-    else:
-        raise ValueError("Invalid argument. Use 'train' or 'test'.")
-
-def plot_data(load_data, img_cnt):
-    """
-    Plots sample images and their labels from a data loader.
-
-    Args:
-        load_data (DataLoader): Data loader to extract images and labels from.
-        img_cnt (int): Number of images to plot.
-    """
-    batch_data, batch_label = next(iter(load_data))
-
-    fig = plt.figure()
-
-    for i in range(img_cnt):
-        plt.subplot(3, 4, i+1)
-        plt.tight_layout()
-        plt.imshow(batch_data[i].squeeze(0), cmap='gray')
-        plt.title(batch_label[i].item())
-        plt.xticks([])
-        plt.yticks([])
 
 def get_correct_pred_count(prediction, labels):
     """
@@ -163,4 +112,17 @@ def test(model, device, test_loader,test_acc):
         test_loss, correct, total_samples, test_accuracy))
 
     return test_loss, test_accuracy
+
+
+#Plotting the Training and Testing Accuracy and Loss Plots
+def loss_plots(train_losses,train_acc,test_losses,test_acc):    
+    fig, axs = plt.subplots(2,2,figsize=(15,10))
+    axs[0, 0].plot(train_losses)
+    axs[0, 0].set_title("Training Loss")
+    axs[1, 0].plot(train_acc)
+    axs[1, 0].set_title("Training Accuracy")
+    axs[0, 1].plot(test_losses)
+    axs[0, 1].set_title("Test Loss")
+    axs[1, 1].plot(test_acc)
+    axs[1, 1].set_title("Test Accuracy")
 
