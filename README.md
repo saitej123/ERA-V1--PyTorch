@@ -6,8 +6,8 @@ This repository provides use PyTorch to train MNIST dataset
 - [Introduction](#introduction)
 - [Features](#features)
 - [Requirements](#requirements)
-- [Files Details ( How To Read )](#files-details)
-- [How To Use](#usage)
+- [Files Details](#files-details)
+- [How To Use](#how-to-use)
 - [Results](#results)
 
 ## Introduction
@@ -32,7 +32,7 @@ This repository contains Python scripts for training and testing a Convolutional
 - Matplotlib
 - CUDA (recommended for GPU)
 
-## File Descriptions
+## Files Details
 
 - `utils.py`: This file contains all the helper functions required for the workflow, such as data preprocessing of the MNIST dataset, data visualization, model training and testing.
 
@@ -40,7 +40,7 @@ This repository contains Python scripts for training and testing a Convolutional
 
 - `S5.ipynb` : The main Jupyter notebook that manages the entire process. It imports functions from `utils.py` and the model from `model.py` to train and evaluate the model on the MNIST dataset. The notebook orchestrates the overall workflow.
 
-## Usage
+## How To Use
 
 - Run the `S5.ipynb` notebook in a Jupyter notebook environment. If `CUDA` is available on your machine, the code will automatically use it to speed up computations.
 
